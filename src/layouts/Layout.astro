@@ -1,14 +1,32 @@
+---
+import Header from "../components/Header/header.astro"
+import Footer from "../components/Footer/footer.astro"
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<title>Adrìa Solà Pastor - Experto en Comunicación y Desarrollo Personal</title>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<meta property="og:url" content="http://adrìasòlapastor.com" / >
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="La Pieza El evento que cambiara tu vida">
+
+		<meta name="description", content="Adrìa Solà Pastor experto en comunicación , relaciones con personas de valor y contenido de valor ">
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:site" content="@adriasolapastor"/>
+		<meta name="twitter:creator" content="@ibaillanos"/>
+		<meta name="twitter:title" content="Adrìa Solà Pastor - Experto en Comunicación y Desarrollo Personal">
+		<meta name="twitter:description", content="Adrìa Solà Pastor experto en comunicación , relaciones con personas de valor y contenido de valor">
+
 	</head>
 	<body>
+		<Header />
 		<slot />
+		<Footer />
 	</body>
 </html>
 
