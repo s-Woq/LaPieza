@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face{
+    font-family: "Victor Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+
+html{
+    font-family: "Victor Mono", monospace;
+}
+.custom-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('../../image/image.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    z-index: 0;
+  }
+  
