@@ -1,41 +1,47 @@
 ---
 import { sponsors } from "../../consts/sponsors.ts"
+import "../../styles/global.css";
 
 
 const firstRow = sponsors.slice(0,6);
 const secondRow = sponsors.slice(6,12);
 ---
-<section id="sponsors">
-    <div class="flex flex-wrap gap-6">
-        {sponsors.map((sponsor) => (
+
+<section id="sponsors" class="max-w-4xl mx-auto my-20 py-36">
+  <h3 class="align-center justify-center flex font-Lexend font-bold font-extrabold text-3xl py-10 px-10 text-white">Ya han Confiado en Mi:</h3>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 place-items-center mb-8">
+        {firstRow.map((sponsor) => (
           <a
-            key={sponsor.id}
             href={sponsor.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block"
+            class="block"
           >
             <img
               src={sponsor.image.logo}
               alt={sponsor.name}
-              class="w-[300px] h-auto border-2 border-gray-300 rounded hover:border-blue-500 hover:shadow-lg transition"
+              class="w-[250px] h-[150px] rounded hover:border-blue-500 hover:shadow-lg transition object-contain max-h-20 grayscale hover:grayscale-0 transition duration-300"
+              
             />
           </a>
         ))}
       </div>
   
-    <div class="grid grid-cols-6 gap-4 ">
-        {
-            secondRow.map((sponsor)=>(
-                <a 
-                href={sponsor.url}
-                target="_blank"
-                class="size-10 hover:scale-125 transition"
-                >
-                    <img src={sponsor.image.logo} alt={sponsor.name} class="w-full h-full" />
-                </a>
-            ))
-        }
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 place-items-center mb-8">
+      {secondRow.map((sponsor) => (
+        <a
+          href={sponsor.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block"
+        >
+          <img
+            src={sponsor.image.logo}
+            alt={sponsor.name}
+            class="w-[250px] h-[150px] rounded hover:border-blue-500 hover:shadow-lg transition object-contain max-h-20 grayscale hover:grayscale-0 transition duration-300"
+          />
+        </a>
+      ))}
     </div>
 
 </section>

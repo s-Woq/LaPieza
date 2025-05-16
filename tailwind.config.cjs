@@ -4,9 +4,12 @@ module.exports = {
       "./public/**/*.html"
     ],
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+          Lexend: ["var(--font-Lexend)", 'sans-serif'],
+      },
     },
     plugins: [
       require('@tailwindcss/typography')
     ],
-  }
+  }}
