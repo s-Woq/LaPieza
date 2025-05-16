@@ -7,6 +7,7 @@ module.exports = {
       extend: {
         fontFamily: {
           Lexend: ["var(--font-Lexend)", 'sans-serif'],
+          Rubik: ["var(--font-Rubik)", 'sans-serif'],
       },
     },
     plugins: [

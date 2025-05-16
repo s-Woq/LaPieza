@@ -6,26 +6,116 @@
 
 
     <div class="relative flex flex-col items-center p-20 w-full">
-            <div id="landing" class="absolute inset-0 flex flex-col items-center w-full ">
-                <div id="hovereffect" class="border border-black border-solid relative flex flex-col items-center transition-all duration-700 ease-in-out overflow-hidden group py-40">
+           <div id="landing" class="absolute inset-0 flex flex-col items-center w-full">
+     <div id="hovereffect" class=" relative flex flex-col items-center transition-all duration-700 ease-in-out overflow-hidden py-20 animate-lapieza px-40 align-center ">
 
-                  <p class="absolute bottom-10 text-white text-4xl font-bold opacity-0 translate-y-10 transition-all duration-700 ease-in-out group-hover:opacity-100 group-hover:translate-y-0 z-10">
-                    La Pieza
-                  </p>
-              
-                  <figure>
-                    <img
-                      class="w-[300px] mt-10 transition-all duration-700 ease-in-out group-hover:translate-y-10 group-hover:scale-110"
-                      src="../../../image/logo.png"
-                      alt="La Pieza"
-                      decoding="async"
-                    />
-                  </figure>
-                </div>
-              </div>
+    <div class="absolute bottom-10 text-white  opacity-0 translate-y-10 animate-text-appear z-1 text-center justify-center animate-fade-in">
+      <p class="text-xl font-Lexend">La</p>
+      <p class="font-Rubik text-8xl">Pieza</p>
+      <p>14 DE <span class="font-Lexend text-2xl">MAYO</span></p>
+   
+    </div>
+
+    <figure>
+      <img
+        class="w-[500px] mt-10 animate-logo-move animate-slide-in-bottom"
+        src="../../../image/logo.png"
+        alt="La Pieza"
+        decoding="async"
+      />
+    </figure>
+  </div>
+</div>
               
           </div>
           
 </div>
 
 </section>
+
+<style>
+  @keyframes logoMove {
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      transform: translateY(100px) scale(1.1);
+    }
+  }
+
+  @keyframes textAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    60%{
+      opacity:0;
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-350px);
+    }
+  }
+
+  @keyframes lapiezaEffect {
+    0% {
+      border-color: rgba(255,255,255,0.2);
+    }
+    100% {
+      background-color: rgba(7,33,55,0.3);
+
+    }
+  }
+      @keyframes holyGlow {
+        0%, 100% { 
+            opacity: 0.3;
+            box-shadow: 0 0 10px 2px rgba(255,255,255,0.1),
+                        0 0 20px 5px rgba(255,255,255,0.05);
+        }
+        50% { 
+            opacity: 0.6;
+            box-shadow: 0 0 15px 5px rgba(255,255,255,0.2),
+                        0 0 30px 10px rgba(255,255,255,0.1);
+        }
+    }
+
+  .animate-logo-move {
+    animation: logoMove 1200ms ease-in-out 500ms forwards;
+  }
+
+  .animate-text-appear {
+    animation: textAppear 700ms ease-in-out 700ms forwards;
+  }
+
+  .animate-lapieza {
+    animation: lapiezaEffect 600ms ease-in-out forwards;
+  }
+      #hovereffect {
+        border-radius: 1rem; 
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .animate-holy-glow {
+        animation: holyGlow 3s ease-in-out infinite;
+    }
+
+    #holy-border {
+        position: relative;
+        overflow: hidden;
+    }
+
+    #holy-border::before {
+        content: '';
+        position: absolute;
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+        border-radius: 1.5rem;
+        background: radial-gradient(circle at center, 
+                    rgba(255,255,255,0.15) 0%, 
+                    rgba(255,255,255,0) 70%);
+        z-index: -1;
+        pointer-events: none;
+    }
+
+</style>
