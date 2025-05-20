@@ -24,6 +24,7 @@
 
 html{
     font-family: "Victor Mono", monospace;
+    overflow-x: hidden;
 }
 .custom-footer::before {
     content: "";

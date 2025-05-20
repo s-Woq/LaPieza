@@ -1,0 +1,164 @@
+---
+const eventDate = new Date("October 22, 2025 00:00:00");
+import "../../styles/global.css"
+---
+<div class="lantern-glow font-serif relative max-w-2xl mx-auto p-8 mask-fade-bottom px-6 py-6 ">
+<div class="vintage-countdown font-serif relative max-w-2xl mx-auto p-8 mask-fade-bottom animation-holyGlow ">
+  <div class="absolute inset-0 border border-yellow-300 rounded-xl  opacity-20 z-0"></div>
+  
+  <h2 class="font-Lexend text-3xl text-amber-900 mb-6 text-center font-bold tracking-wider border-b-2 border-amber-800 pb-2 relative z-10">
+    Proximo Evento
+  </h2>
+
+  <div class="grid grid-cols-4 gap-4 relative z-10">
+    <div class="countdown-card bg-amber-50/90 border-2 border-amber-200 shadow-lg">
+      <div class="countdown-value text-5xl font-bold text-amber-900" id="days">00</div>
+      <div class="countdown-label text-sm uppercase tracking-widest text-amber-700">Days</div>
+      <div class="paper-tear absolute bottom-0 left-0 right-0 h-1 bg-amber-200/50"></div>
+    </div>
+    
+    <div class="countdown-card bg-amber-50/90 border-2 border-amber-200 shadow-lg">
+      <div class="countdown-value text-5xl font-bold text-amber-900" id="hours">00</div>
+      <div class="countdown-label text-sm uppercase tracking-widest text-amber-700">Hours</div>
+      <div class="paper-tear absolute bottom-0 left-0 right-0 h-1 bg-amber-200/50"></div>
+    </div>
+
+    <div class="countdown-card bg-amber-50/90 border-2 border-amber-200 shadow-lg">
+      <div class="countdown-value text-5xl font-bold text-amber-900" id="minutes">00</div>
+      <div class="countdown-label text-sm uppercase tracking-widest text-amber-700">Minutes</div>
+      <div class="paper-tear absolute bottom-0 left-0 right-0 h-1 bg-amber-200/50"></div>
+    </div>
+
+    <div class="countdown-card bg-amber-50/90 border-2 border-amber-200 shadow-lg">
+      <div class="countdown-value text-5xl font-bold text-amber-900" id="seconds">00</div>
+      <div class="countdown-label text-sm uppercase tracking-widest text-amber-700">Seconds</div>
+      <div class="paper-tear absolute bottom-0 left-0 right-0 h-1 bg-amber-200/50"></div>
+    </div>
+  </div>
+</div>
+  <div id="paper-scraps" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+</div>
+
+<script is:inline>
+  function startCountdown() {
+    const eventTime = new Date("October 22, 2025 00:00:00").getTime();
+    const paperScrapsContainer = document.getElementById('paper-scraps');
+    const countdownContainer = document.querySelector('.vintage-countdown');
+    
+    if (!paperScrapsContainer || !countdownContainer) return;
+
+    let lastSecond = 0;
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const diff = eventTime - now;
+      
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+      
+      if (daysEl) daysEl.textContent = days.toString().padStart(2, '0');
+      if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+      if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+      if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+      if (seconds !== lastSecond) {
+        createPaperScrap();
+        lastSecond = seconds;
+      }
+
+      if (diff <= 0) {
+        clearInterval(timer);
+        countdownContainer.innerHTML = `
+          <div class="text-4xl text-amber-800 text-center py-16 font-bold">
+            🎉 EL EVENTO HA COMENZADO! 🎉
+          </div>
+        `;
+      }
+    };
+
+    const createPaperScrap = () => {
+      const scrap = document.createElement('div');
+      scrap.className = 'paper-scrap absolute w-8 h-8 bg-amber-100 opacity-80';
+      scrap.style.left = `${Math.random() * 100}%`;
+      scrap.style.top = '0';
+      scrap.style.transform = `rotate(${Math.random() * 360}deg)`;
+      
+      scrap.animate([
+        { top: '0', opacity: 0.8 },
+        { top: '100%', opacity: 0 }
+      ], {
+        duration: 3000 + Math.random() * 5000,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      });
+
+      paperScrapsContainer.appendChild(scrap);
+      setTimeout(() => scrap.remove(), 8000);
+    };
+
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  }
+
+  // Start when DOM is ready
+  if (document.readyState !== 'loading') {
+    startCountdown();
+  } else {
+    document.addEventListener('DOMContentLoaded', startCountdown);
+  }
+</script>
+
+<style>
+ .countdown-card{
+        width:8em;
+        height:5em;
+ }
+  @keyframes lanternPulse {
+    0%, 100% {
+      box-shadow: 
+        0 0 15px 4px rgba(255, 230, 160, 0.2),
+        0 0 40px 10px rgba(255, 198, 100, 0.15),
+        0 0 80px 20px rgba(255, 180, 80, 0.1);
+      border-color: rgba(255, 223, 140, 0.4);
+    }
+    50% {
+      box-shadow: 
+        0 0 25px 6px rgba(255, 240, 180, 0.4),
+        0 0 50px 15px rgba(255, 210, 120, 0.25),
+        0 0 100px 30px rgba(255, 180, 80, 0.2);
+      border-color: rgba(255, 240, 180, 0.6);
+    }
+  }
+
+  /* Lantern Glow Style */
+  .lantern-glow {
+    background: rgba(255, 245, 220, 0.05); /* subtle lantern light */
+    border: 2px solid rgba(255, 223, 140, 0.3);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+      0 0 15px 4px rgba(255, 230, 160, 0.2),
+      0 0 40px 10px rgba(255, 198, 100, 0.15),
+      0 0 80px 20px rgba(255, 180, 80, 0.1);
+    animation: lanternPulse 4s ease-in-out infinite;
+  }
+
+  /* Optional fade mask if you use it */
+  .mask-fade-bottom::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    background: linear-gradient(to bottom, transparent, #000);
+    pointer-events: none;
+  }
+</style>
