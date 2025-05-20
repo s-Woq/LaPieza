@@ -2,40 +2,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @plugin "@midudev/tailwind-animations";
 
-
-:root{
+:root {
     --font-Lexend: 'Lexend Giga', sans-serif;   
     --font-Victor: 'Victor Mono', monospace;
     --font-Rubik: 'Rubik Glitch', sans-serif;
 }
 
-@font-face{
+@font-face {
     font-family: "Victor Mono";
     font-style: normal;
     font-weight: 400;
     font-display: swap;
 }
 
-html{
+html {
     font-family: "Victor Mono", monospace;
     overflow-x: hidden;
 }
-.backgroundimagehero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: url("../../image/bgopt.jpg");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.6;
-  z-index: 0;
+
+/* Hero Background - Mobile adjustments */
+.backgroundimagehero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../../image/bgopt.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    z-index: 0;
 }
+
+/* Footer Background - Mobile adjustments */
 .custom-footer::before {
     content: "";
     position: absolute;
@@ -45,73 +47,240 @@ html{
     background-position: center;
     opacity: 0.6;
     z-index: 0;
-  }
+}
 
+/* Logo Image - Mobile adjustments */
 .lapiezaimg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('/image/logo.png'); /* Adjusted path */
-  background-size: contain; /* Changed from 'cover' to maintain aspect ratio */
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 0;
-}
-.event-img {
-  position: relative; /* Needed to contain the absolute pseudo-element */
-  width: 600px;
-  height: 400px; /* Give it a defined height */
-  /* border:1px solid red; */
-  background-color: transparent;
-  border-top-right-radius: 1rem;  /* rounded top-right */
-  border-bottom-left-radius: 1rem; /* rounded bottom-left */
-  overflow: hidden;
-}
-.event-img::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('/image/missing-piece.webp'); /* Adjusted path */
-  background-size: contain; /* Changed from 'cover' to maintain aspect ratio */
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 0;
-}
- /* .lapiezaimg::before {
     content: "";
-    position: relative;
+    position: absolute;
     inset: 0;
-    background-image: url('../../image/logo.png');
-    background-size: cover;
+    background-image: url('/image/logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.6;
     z-index: 0;
-  }  */
-  @layer utilities {
-    .mask-fade-top{
-      mask-image: linear-gradient(to top, black 80%, transparent 100%);
+}
+
+/* Event Image - Mobile adjustments */
+.event-img {
+    position: relative;
+    width: 100%; /* Changed from fixed width to responsive */
+    max-width: 600px; /* Maximum size */
+    height: 300px; /* Reduced height for mobile */
+    background-color: transparent;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    overflow: hidden;
+    margin: 0 auto; /* Center the element */
+}
+
+@media (min-width: 768px) {
+    .event-img {
+        height: 400px; /* Original height for larger screens */
+    }
+}
+
+.event-img::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/image/missing-piece.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 0;
+}
+
+/* Mask utilities */
+@layer utilities {
+    .mask-fade-top {
+        mask-image: linear-gradient(to top, black 80%, transparent 100%);
     }
     .mask-fade-bottom {
-      mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     }
-  }
+}
 
-  
+/* Animation */
 @keyframes revealLogoText {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(20px) scale(1.1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(40px) scale(1.1);
-    opacity: 1;
-  }
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px) scale(1.05); /* Reduced movement for mobile */
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(20px) scale(1.05); /* Reduced movement for mobile */
+        opacity: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    @keyframes revealLogoText {
+        0% {
+            transform: translateY(0) scale(1);
+            opacity: 0;
+        }
+        50% {
+            transform: translateY(20px) scale(1.1);
+            opacity: 0.5;
+        }
+        100% {
+            transform: translateY(40px) scale(1.1);
+            opacity: 1;
+        }
+    }
 }
 
 .animate-reveal {
-  animation: revealLogoText 1.5s ease-out forwards;
+    animation: revealLogoText 1.5s ease-out forwards;
+}
+
+/* Additional mobile optimizations */
+@media (max-width: 767px) {
+    /* Reduce font sizes if needed */
+    html {
+        font-size: 14px;
+    }
+    
+    /* Adjust background positions for mobile */
+    .backgroundimagehero::before,
+    .custom-footer::before {
+        background-position: 60% center;
+    }
+    
+    /* Make sure images don't take too much memory on mobile */
+    .lapiezaimg::before,
+    .event-img::before {
+        background-size: 80% auto;
+    }
+}
+
+
+@media (max-width: 767px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .backgroundimagehero::before,
+    .custom-footer::before {
+        background-attachment: scroll; 
+        background-position: 65% center;
+    }
+}
+
+/* Large Phones */
+@media (max-width: 414px) {
+    .event-img {
+        height: 250px;
+    }
+    
+    .lapiezaimg::before,
+    .event-img::before {
+        background-size: 85% auto;
+    }
+    
+    @keyframes revealLogoText {
+        0% { transform: translateY(0) scale(1); opacity: 0; }
+        100% { transform: translateY(15px) scale(1.03); opacity: 1; }
+    }
+}
+
+/* Medium Phones (e.g., iPhone 6/7/8 Plus, Samsung Galaxy S8+) - 375-412px width */
+@media (max-width: 412px) {
+    .event-img {
+        height: 220px;
+        border-top-right-radius: 0.75rem;
+        border-bottom-left-radius: 0.75rem;
+    }
+    
+    /* Smoother animations for lower-powered devices */
+    .animate-reveal {
+        animation: revealLogoText 1.2s ease-out forwards;
+    }
+}
+
+/* Small Phones (e.g., iPhone SE, Samsung Galaxy S5) - 320-374px width */
+@media (max-width: 374px) {
+    html {
+        font-size: 13px;
+    }
+    
+    .event-img {
+        height: 180px;
+    }
+    
+    .lapiezaimg::before,
+    .event-img::before {
+        background-size: 90% auto;
+    }
+    
+    /* Simplify animation for very small devices */
+    @keyframes revealLogoText {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+}
+
+/* Samsung Fold and other ultra-small devices */
+@media (max-width: 280px) {
+    html {
+        font-size: 12px;
+    }
+    
+    .event-img {
+        height: 150px;
+    }
+}
+
+
+
+/* iPhone notch/punch-hole safe areas */
+@supports (padding: max(0px)) {
+    .safe-area-padding {
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+        padding-top: max(12px, env(safe-area-inset-top));
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+    }
+}
+
+/* Samsung Internet browser scrollbar fix */
+html::-webkit-scrollbar {
+    width: 6px;
+    background: transparent;
+}
+
+/* iOS viewport height fix */
+@supports (-webkit-touch-callout: none) {
+    .min-h-screen {
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Pixel density adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+    .backgroundimagehero::before,
+    .custom-footer::before {
+        background-image: url('../../image/bgopt.jpg'); /* Retina/high-DPI version */
+        height:50vh;
+        width:100vw;
+        background-position: center;
+        background-size: cover;
+        mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    }
+}
+
+/* Orientation-specific adjustments */
+@media (max-width: 767px) and (orientation: landscape) {
+    .event-img {
+        height: 200px !important;
+        max-width: 80%;
+    }
+    
+    .backgroundimagehero::before {
+        background-position: 75% center;
+    }
 }
