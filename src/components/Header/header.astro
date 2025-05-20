@@ -1,3 +1,41 @@
-<header>
-    
+<header class="fixed top-0 w-full z-50 text-white mx-auto">
+    <nav class="flex items-center px-6 py-7 text-sm font-light justify-between max-w-6xl mx-auto">
+
+        <div class="hidden md:flex flex-row gap-4 justify-start">
+            <a href="../../components/" class="inline-block font-Lexend hover:underline">SIGUIENTES <strong>FECHAS</strong></a>
+            <a href="https://adriasolapastor.com/" target="_blank" class="inline-block font-Lexend hover:underline">QUIEN <strong>SOY</strong></a>
+
+        </div>
+        <div class="hidden md:flex flex-col justify-end font-Lexend items-end ">
+            <span class="inline-block font-Lexend opacity-40 cursor-not-allowed relative">
+            Quiero Ser Parte de <strong>ICO</strong>
+            
+            <span class="absolute text-[15px] top-4 inset-0 text-center text-blue-500 font-Lexend mt-1">Próximamente</span>
+            </span>
+        </div>
+    </nav>
 </header>
+
+<style>
+    header{
+        background: transparent;
+        animation:blur-scroll 0.5 linear both;
+        animation-timeline: scroll();
+        animation-range: 0 250px;
+        border-bottom: 1px solid transparent;
+    }
+    @keyframes blur-scroll{
+        0%{
+            backdrop-filter: blur(0px);
+            background: transparent;
+           
+        }
+        100%{ 
+            backdrop-filter:blur(10px);
+            background:rgba(0, 0, 0, 0.3);
+            padding-bottom:var(--spacing-6);
+            border-bottom-color:black;
+
+        }
+    }
+</style>
