@@ -57,7 +57,26 @@ html{
   background-position: center;
   z-index: 0;
 }
-
+.event-img {
+  position: relative; /* Needed to contain the absolute pseudo-element */
+  width: 600px;
+  height: 400px; /* Give it a defined height */
+  /* border:1px solid red; */
+  background-color: transparent;
+  border-top-right-radius: 1rem;  /* rounded top-right */
+  border-bottom-left-radius: 1rem; /* rounded bottom-left */
+  overflow: hidden;
+}
+.event-img::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/image/missing-piece.webp'); /* Adjusted path */
+  background-size: contain; /* Changed from 'cover' to maintain aspect ratio */
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 0;
+}
  /* .lapiezaimg::before {
     content: "";
     position: relative;
