@@ -1,0 +1,91 @@
+---
+import "../styles/global.css";
+import NavBar from "../components/Header/header.astro"
+import Save from "../../image/icons/save.svg"
+import Location from "../../image/icons/location.svg"
+import Money from "../../image/icons/money.svg"
+import Schedule from "../../image/icons/schedule.svg"
+import AboveAge from "../../image/icons/aboveage.svg"
+import Duration from "../../image/icons/duration.svg"
+import Footer from "../components/Footer/footer.astro"
+---
+<NavBar />
+<div class="bg-form absolute w-full h-full z-0 opacity-60 mask-fade-bottom"></div>
+<div class=" flex items-center justify-center min-h-screen bg-[#0F2B46] z-99">
+    <div class="absolute font-Rubik text-6xl flex justify-center text-center align-top py-10 text-white font-bold  top-10 ">
+    <a href="/" class="z-100">LA PIEZA</a>
+    </div>
+  <form class="border-form bg-[rgba(20,20,20,0.4)]]rounded-xl shadow-lg p-8 w-full max-w-md flex flex-col gap-6 text-center z-10">
+    <h2 class="font-Lexend text-2xl font-bold text-white text-center mb-2 ">Registrate</h2>
+    <div class="flex flex-col gap-2">
+      <label for="name" class="text-white font-medium">Nombre</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        required
+        placeholder="Tu nombre"
+        class="px-4 py-2 text-center rounded-lg border border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+      />
+    </div>
+    <div class="flex flex-col gap-2">
+      <label for="email" class="text-white font-medium">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        placeholder="tu@email.com"
+        class="px-4 py-2 rounded-lg text-center border border-blue-300 focus:ring-2 focus:ring-blue-400 transition w-100% "
+      />
+    </div>
+    <button
+      type="submit"
+      class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-2xl transition-all shadow-md active:scale-95 "
+    >
+      Registrarse
+    </button>
+  </form>
+</div>
+
+<div class="info-del-evento relative w-full h-96 border justify-center align-middle border-red-500 bg-[#0F2B46] px-10 py-10">
+    <div class="flex flex-col gap-4 justify-center items-center w-3/4 rounded-xl h-52 border-t-2 border-b-2 border-white py-10 px-10">
+        <div class="text-white flex justify-start w-full ">Quieres Llevar tu comunicación al siguiente nivel?</div>
+        <div class="w-full  grid grid-cols-3 grid-rows-2 ">
+        <div class="item-form-box flex flex-row text-white font-Lexend"><Save class="w-8 h-8 " /><p>Fecha <br> 15/04</p></div>
+        <div class="item-form-box flex flex-row text-white font-Lexend"><Location class="w-8 h-8" /><p>Lugar <br> Remote</p></div>
+        <div class="item-form-box flex flex-row text-white font-Lexend"><Schedule class="w-8 h-8" /><p>Horario <br> 15hrs</p></div>
+        <div class="item-form-box flex flex-row text-white font-Lexend"><AboveAge class="w-8 h-8" /><p>+18 <br> Sin restriccion de edad</p></div>
+        <div class="item-form-box flex flex-row text-white font-Lexend"><Duration class="w-8 h-8" /><p>Duración <br> 2hrs</p></div>
+        <div class="item-form-box flex flex-row text-white font-Lexend"><Money class="w-8 h-8" /> <p>Inevstion<br>Gratis</p></div>
+        </div>
+    </div>
+</div>
+
+<Footer  />
+
+
+<style>
+    
+
+    @keyframes animate-glow{
+        0% {
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        50% {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+        }
+        100% {
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+    }
+    .border-form{
+        animation:animate-glow 10s infinite both;
+    }
+    .bg-form{
+        background-image: url("../../image/bgopt.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
