@@ -37,6 +37,7 @@ html {
     z-index: 0;
 }
 
+
 /* Footer Background - Mobile adjustments */
 .custom-footer::before {
     content: "";
